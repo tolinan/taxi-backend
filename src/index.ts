@@ -1,10 +1,12 @@
 import express from "express";
-import { pool } from "./db/index.js";
+import { pool } from "./db/schema/index.js";
+import taxiRouter from "./routes/taxi.js";
 
 const app = express();
 const port = 8000;
 
 app.use(express.json());
+app.use("/taxis", taxiRouter);
 
 app.get("/", (_request, response) => {
   response.send("Taxi API is running");
